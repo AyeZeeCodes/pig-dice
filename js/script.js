@@ -8,11 +8,15 @@ function Player(name, totalScore) {
   this.name = name;
   this.totalScore = 0;
 };
-
 //Defining player objects
-var player1 = new Player("dan");
-var player2 = new Player("alex");
 
+var player1 = new Player ('Dan');
+var player2 = new Player ('Alex');
+//$('#playerSubmit').submit(function(event) {
+//  event.prefentDefault;
+//  var player1 = new Player($("#player1Name").val());
+//  var player2 = new Player($("#player2Name").val());
+//  });
 //Creates an empty array to store the turn's values
 var rollResult = [];
 
@@ -40,6 +44,7 @@ $(function() {
           $("#result").show();
           $("#turnScore").text(turnScore);
           $("#p1Score").append(turnScore);
+          $("button#hold, button#roll").attr("disabled", "disabled");
           $('#nextPlayer').show();
 
           player1.totalScore = turnScore;

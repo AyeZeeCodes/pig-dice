@@ -9,6 +9,10 @@
   border: none;
   border-bottom: 4px solid #1E88E5;
 }
+.form-inline .form-control {
+  height: 62px;
+  width: 200px;
+}
 #result, #lastRoll {
   display: none;
   margin: 20px;
