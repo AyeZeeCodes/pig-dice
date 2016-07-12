@@ -3,31 +3,54 @@
   <head>
     <meta charset="utf-8">
     <title>Pig Dice</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/jquery.3.0.0.min.js"></script>
-    <script src="js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <h1>Pig Dice Game</h1>
-          <p>The Rules Are:
-          <ul>
-            <li>If the player rolls a 1, they score nothing and it becomes the next player's turn.</li>
-            <li>If the player rolls any other number, it is added to their turn total and the player's turn continues.</li>
-            <li>If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.</li>
-          </ul>
-          <button id="roll" type="submit" >Roll dice</button>
-          <button id="hold" type="submit" >Hold</button>
-
-          <div id="turnScore">
-            
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2">
+            <h1>Play Pig Dice!</h1>
+            <p>The Rules Are:</p>
+            <ul>
+              <li>If the player rolls a 1, they score nothing and it becomes the next player's turn.</li>
+              <li>If the player rolls any other number, it is added to their turn total and the player's turn continues.</li>
+              <li>If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+
+          <button id="roll" class="btn btn-primary" type="submit" >Roll dice</button>
+          <button id="hold" class="btn btn-primary" type="submit" >Hold</button>
+          <div id="lastRoll">
+            <p>You last rolled a <span id="rollCount"></span></p>
+          </div>
+          <div id="result">
+            <h3>Your Score For That Round Was: <span id="turnScore"></span></h3>
+          </div>
+          <button id="nextPlayer" class="btn btn-primary" type="submit">Next Player's Turn</button>
+        </div>
+        <div class="col-lg-4">
+          <h3>Player 1 Score:</h3>
+            <div id="p1Score">
+            </div>
+          <h3>Player 2 Score:</h3>
+            <div id="p2Score">
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery.3.0.0.min.js"></script>
+    <script src="js/sweetalert-dev.js"></script>
+    <script src="js/script.js"></script>
 
   </body>
 </html>

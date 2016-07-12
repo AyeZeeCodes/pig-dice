@@ -1,0 +1,34 @@
+.jumbotron {
+  background: #e57373;
+  color: #fff;
+}
+.btn {
+  background: #64B5F6;
+  font-size: 20px;
+  padding: 15px 30px;
+  border: none;
+  border-bottom: 4px solid #1E88E5;
+}
+#result, #lastRoll {
+  display: none;
+  margin: 20px;
+}
+#lastRoll {
+  font-size: 18px;
+  font-weight: bold;
+  color: #e57373;
+}
+#turnScore, h3 {
+  margin-top: 50px;
+  color: #64B5F6;
+  font-size: 24px;
+}
+
+#rollCount {
+  border: 2px solid #e57373;
+  padding: 5px 10px;
+  margin: 0 5px;
+}
+#nextPlayer {
+  display: none;
+}

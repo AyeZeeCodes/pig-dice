@@ -21,51 +21,31 @@ $(function() {
   $("#roll").click(function() {
      var roll = parseInt(rollDice());
      if(roll === 1) {
-       alert('Your turn is over');
-     } else {
+       $("button#hold, button#roll").attr("disabled", "disabled");
+        //Improve Alert Message Styling
+         swal("Uh Oh! You Rolled A 1", "Next Player's Turn");
+         $('#nextPlayer').show();
+
+        } else {
        rollResult.push(roll);
+       $('#lastRoll').show();
+       $('#rollCount').text(roll);
      }
-     console.log(rollResult);
-     $("#hold").click(function() {
-       var turnScore = 0;
-        // Add up the roll values to get turnScore
-         rollResult.forEach(function(roll) {
-           turnScore += roll;
-           $("#turnScore").text(turnScore);
+  }); //Ends roll dice function
+  $("#hold").click(function() {
+    var turnScore = 0;
+    // Add up the roll values to get turnScore
+      rollResult.forEach(function(roll) {
+        turnScore += roll;
+          $("#result").show();
+          $("#turnScore").text(turnScore);
+          $("#p1Score").append(turnScore);
+          $('#nextPlayer').show();
+
           player1.totalScore = turnScore;
-         });
-
-      });
-      if (Player.totalScore >= 100) {
-        alert('You WIN!!!');
-      }
-
-    // for (i = 0; i < 4; i++) {
-    //   turnScore = 0;
-    //   roll = rollDice();
-    //   console.log(roll);
-    //   turnScore += roll;
-    //   console.log(turnScore);
-    // };
-
-
-
-
-    // if(roll === 1) {
-    //   alert('Your Turn Over');
-    //   turnScore = 0;
-    //   return;
-    // } else {
-    //   rollDb.push(roll);
-    //   console.log(roll);
-    //
-    //   console.log(turnScore);
-
-
-    //if roll = 1 --> leave the loop
-    //if user clicks hold --> leave the program and report the turn's score
-    //if the user clicks roll dice button --> loop through program again
-  });
-
-
+      }); //Loops through each value in the array
+    }); //Ends hold button function
+    $('#nextPlayer').click(function() {
+    location.reload();
 });
+}); //Ends jQuery document ready wrapper
