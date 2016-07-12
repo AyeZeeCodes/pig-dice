@@ -43,7 +43,7 @@ $(function() {
         turnScore += roll;
           $("#result").show();
           $("#turnScore").text(turnScore);
-          $("#p1Score").append(turnScore);
+          $("#p1Score").text(turnScore);
           $("button#hold, button#roll").attr("disabled", "disabled");
           $('#nextPlayer').show();
 
