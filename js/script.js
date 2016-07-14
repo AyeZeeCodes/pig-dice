@@ -9,75 +9,54 @@ function Player(name, turnScore, totalScore) {
   this.turnScore = [];
   this.totalScore = 0;
 };
+
 //Defining player objects
+var players = [];
+$('#playerSubmit').click(function(event) {
+  event.preventDefault();
+  console.log($("#player1Name").val());
+  players[0] = new Player($("#player1Name").val());
+  players[1] = new Player($("input#player2Name").val());
+  });
 
-var player1 = new Player ('Dan');
-var player2 = new Player ('Alex');
-// $('form#playerSubmit').submit(function(event) {
-//   var player1 = new Player ($("input#player1Name").val())
-//   var player2 = new Player ($("input#player2Name").val())
-//   event.prefentDefault();
-//  });
-//Creates an empty array to store the turn's values
-//var rollResult = [];
+var player = 0;
 
-//Switches player's turn
+function EndTurn() {
+  players[player].turnScore = [];
+  player = (player + 1) % 2;
+};
+function outputPlayerScore(score) {
+  $('#player' + player).html('<p>' + score + '</p>');
+};
 
-var player_index = 1;
-var player = 'player1';
-console.log(player);
-function getPlayer() {
-  if (player_index%2 !== 0) {
-    player = player1;
-  } else {
-      player = player2;
-    };
-    return player;
-  };
-  function outputPlayerScore(score) {
-      if (player === player1) {
-        $('#player1').html('<p>' + score + '</p>');
-      } else {
-        $('#player2').html('<p>' + score + '</p>');
-      };
-
-    };
 // jQuery front end logic.
 $(function() {
-
   $("#roll").click(function() {
-    getPlayer();
-    console.log(player);
+    console.log(players[player]);
      var roll = parseInt(rollDice());
-     if(roll === 1) {
-       //Improve Alert Message Styling
-       player.turnScore = [];
-        player_index += 1;
-        swal("Uh Oh! You Rolled A 1", "Next Player's Turn");
-        } else {
-          player.turnScore.push(roll);
-         $('#lastRoll').show();
-         $('#rollCount').text(roll);
-       }
-      if (player.totalScore + player.turnScore > 19) {
-        alert("Yay");
+     if (roll === 1) {
+       swal("Uh Oh! You Rolled A 1", "Next Player's Turn");
+       EndTurn();
+      }
+      else {
+        players[player].turnScore.push(roll);
+        $('#lastRoll').show();
+        $('#rollCount').text(roll);
       }
   }); //Ends roll dice function
 
-
   $("#hold").click(function() {
-    getPlayer();
     var score = 0;
+
     // Add up the roll values to get turnScore
-      player.turnScore.forEach(function(roll) {
-        score += roll;
-        $("#turnResult").show();
-        $("#score").text(score);
-            //$("button#hold, button#roll").attr("disabled", "disabled");
-          player.totalScore += score; // += score ??
-      }); //Loops through each value in the array
-      outputPlayerScore(score);
-      player_index += 1;
-      console.log(player_index);
-    }); //Ends hold button function
+    players[player].turnScore.forEach(function(roll) {
+      score += roll;
+      $("#turnResult").show();
+    }); //Loops through each value in the array
+
+    $("#score").text(score);
+    players[player].totalScore += score; // += score ??
+    outputPlayerScore(players[player].totalScore);
+    EndTurn();
+  }); //Ends hold button function
 }); //Ends jQuery document ready wrapper

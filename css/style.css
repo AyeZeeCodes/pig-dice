@@ -27,7 +27,12 @@
   color: #64B5F6;
   font-size: 24px;
 }
+#player1 p, #player2 p {
+  margin: 0;
+  color: #e57373;
+  font-size: 24px;
 
+}
 #rollCount {
   border: 2px solid #e57373;
   padding: 5px 10px;
