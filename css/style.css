@@ -13,7 +13,7 @@
   height: 62px;
   width: 300px;
 }
-#result, #lastRoll {
+#turnResult, #lastRoll {
   display: none;
   margin: 20px;
 }
@@ -22,7 +22,7 @@
   font-weight: bold;
   color: #e57373;
 }
-#turnScore, h3 {
+#score, h3 {
   margin-top: 50px;
   color: #64B5F6;
   font-size: 24px;
@@ -33,6 +33,6 @@
   padding: 5px 10px;
   margin: 0 5px;
 }
-#nextPlayer {
+/*#nextPlayer {
   display: none;
-}
+}*/
