@@ -34,13 +34,14 @@ function getPlayer() {
     };
     return player;
   };
-  function outputPlayerScore() {
+  function outputPlayerScore(score) {
       if (player === player1) {
-        $("#player1").append(score);
+        $('#player1').html('<p>' + score + '</p>');
       } else {
-        $("#player2").append(score);
+        $('#player2').html('<p>' + score + '</p>');
       };
-  };
+
+    };
 // jQuery front end logic.
 $(function() {
 
@@ -49,15 +50,18 @@ $(function() {
     console.log(player);
      var roll = parseInt(rollDice());
      if(roll === 1) {
-       //$("button#hold, button#roll").attr("disabled", "disabled");
-        //Improve Alert Message Styling
-         swal("Uh Oh! You Rolled A 1", "Next Player's Turn");
-         return;
+       //Improve Alert Message Styling
+       player.turnScore = [];
+        player_index += 1;
+        swal("Uh Oh! You Rolled A 1", "Next Player's Turn");
         } else {
-       player.turnScore.push(roll);
-       $('#lastRoll').show();
-       $('#rollCount').text(roll);
-     }
+          player.turnScore.push(roll);
+         $('#lastRoll').show();
+         $('#rollCount').text(roll);
+       }
+      if (player.totalScore + player.turnScore > 19) {
+        alert("Yay");
+      }
   }); //Ends roll dice function
 
 
@@ -70,9 +74,9 @@ $(function() {
         $("#turnResult").show();
         $("#score").text(score);
             //$("button#hold, button#roll").attr("disabled", "disabled");
-          player.totalScore = score;
+          player.totalScore += score; // += score ??
       }); //Loops through each value in the array
-      outputPlayerScore();
+      outputPlayerScore(score);
       player_index += 1;
       console.log(player_index);
     }); //Ends hold button function
